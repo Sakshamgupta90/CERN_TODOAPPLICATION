@@ -35,15 +35,9 @@ export class TodoService {
     
     return new Observable<void>(observer => {
       setTimeout(() => {
-       if (Math.random() < .8) {
           removeFromMockData(id);
           observer.next();
-        } else {
-          observer.error('Failed');
-        }
-        observer.complete();
-
-        
+          observer.complete();
       }, 2_000)
     })
 
