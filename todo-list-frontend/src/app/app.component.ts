@@ -1,6 +1,6 @@
 import {Component } from '@angular/core';
 import {Todo, TodoService} from "./todo.service";
-import {asapScheduler, asyncScheduler, from, fromEvent, Observable, of, scheduled} from "rxjs";
+import {asapScheduler, asyncScheduler, from, fromEvent, Observable, of, scheduled, Subscriber} from "rxjs";
 import { debounceTime, distinctUntilChanged, filter, map, switchMap } from "rxjs/operators";
 
 
@@ -28,6 +28,7 @@ export class AppComponent {
   readonly todos$: Observable<Todo[]>;
   tasks: Todo[] = [];
   todoservice: TodoService;
+  message?: string = undefined;
 
   constructor(todoService: TodoService) {
     this.todos$ = todoService.getAll();
@@ -35,7 +36,8 @@ export class AppComponent {
     this.todoservice = todoService;
   }
 
-// Implementation Search 
+  // Implementation Search 
+
   searchTodo(searchText: string) {
     //console.log(searchText)
     if (!searchText) {
@@ -49,14 +51,18 @@ export class AppComponent {
     }
   }
 
-  //Onclick
+  //Implement delete 
+
   onClick(t: any){
     console.log(t)
-    this.todoservice.remove(t.id);
-    (this.todos$ as any) = this.todoservice.getAll();
+    this.todoservice.remove(t.id).subscribe(
+      () => {
+        (this.todos$ as any) = this.todoservice.getAll();
+      },
+      );
   }
 
-  //Implement loading
+  //Implement loading bar
 
   ngAfterViewInit() {
     let element = document.getElementById('progress-bar')
@@ -66,6 +72,6 @@ export class AppComponent {
         element!.id = 'progress-bar-hidden'
       }, 2_000)   
     }
-    
+
   }
 }
