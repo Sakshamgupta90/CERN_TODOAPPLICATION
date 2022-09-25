@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
+
 import {Observable, of} from "rxjs";
 import {delay, map} from "rxjs/operators";
+
 
 export interface Todo {
   id: number;
@@ -23,22 +25,33 @@ function removeFromMockData(id: number) {
   providedIn: 'root'
 })
 export class TodoService {
-
+  id(id: any): any {
+    throw new Error('Method not implemented.');
+  }
+  
   getAll(): Observable<Todo[]> {
     return of(undefined).pipe(delay(2_000), map(() => mockData));
   }
 
+  
+//Remove function
+
   remove(id: number): Observable<void> {
+    
     return new Observable<void>(observer => {
       setTimeout(() => {
-        if (Math.random() < .8) {
+       if (Math.random() < .8) {
           removeFromMockData(id);
           observer.next();
         } else {
           observer.error('Failed');
         }
         observer.complete();
+
+        
       }, 2_000)
     })
   }
+
+  
 }

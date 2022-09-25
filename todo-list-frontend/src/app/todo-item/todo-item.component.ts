@@ -4,7 +4,7 @@ import {Todo} from "../todo.service";
 @Component({
   selector: 'app-todo-item',
   template: `
-      <div class="task-indicator">
+      <div class="task-indicator" >
         {{ item.task }}
       </div>
       <div class="priority-indicator" [style.background-color]="color">
