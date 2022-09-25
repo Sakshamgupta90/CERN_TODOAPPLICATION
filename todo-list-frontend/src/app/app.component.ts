@@ -1,7 +1,6 @@
 import {Component } from '@angular/core';
 import {Todo, TodoService} from "./todo.service";
-import {asapScheduler, asyncScheduler, from, fromEvent, Observable, of, scheduled, Subscriber} from "rxjs";
-import { debounceTime, distinctUntilChanged, filter, map, switchMap } from "rxjs/operators";
+import {Observable, of} from "rxjs";
 
 
 @Component({

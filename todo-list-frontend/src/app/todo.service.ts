@@ -31,8 +31,6 @@ export class TodoService {
   }
 
   
-//Remove function
-
   remove(id: number): Observable<void> {
     
     return new Observable<void>(observer => {

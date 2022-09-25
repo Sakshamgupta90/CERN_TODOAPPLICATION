@@ -8,7 +8,6 @@ import {ProgressBarComponent} from './progress-bar/progress-bar.component';
 import { ComponentNameComponent } from './component-name/component-name.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,

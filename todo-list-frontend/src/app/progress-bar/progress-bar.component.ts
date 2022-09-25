@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-
 @Component({
   selector: 'app-progress-bar',
   template: '',
@@ -13,9 +12,5 @@ export class ProgressBarComponent implements OnInit {
   ngOnInit() {
     
   }
-
-  
-
-  
 
 }
